@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		<script id='sap-ui-bootstrap' type='text/javascript'
+				src='/sap/ui5/1/resources/sap-ui-core.js'
+				data-sap-ui-theme='sap_bluecrystal'
+				data-sap-ui-libs='sap.ui.commons,sap.m'
+				data-sap-ui-xx-bindingSyntax="complex">
+		</script>
+		<script src="http://maps.googleapis.com/maps/api/js?key=PUT_YOUR_PERSONAL_GOOGLE_MAPS_API_KEY_HERE&sensor=true&libraries=drawing"></script>
+		<style>
+			.gMap {  
+				height: 100%;  
+				width: 100%  
+			}  
+		</style>
+		<script>
+			sap.ui.localResources("view");
+			var appView = sap.ui.xmlview("appView","view.app");
+			appView.placeAt('content');
+		</script>
+	</head>
+	<body class='sapUiBody'>
+		<div id='content'></div>
+	</body>
+</html>

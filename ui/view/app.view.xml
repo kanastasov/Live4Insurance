@@ -1,0 +1,97 @@
+<mvc:View
+  controllerName="view.app"
+  xmlns:l="sap.ui.layout"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns="sap.m">
+
+	<l:Splitter>
+
+			<VBox id="mapCanvas" alignItems="Center" width="500px" height="500px">
+				<layoutData><l:SplitterLayoutData size="500px" /></layoutData>
+			</VBox>
+
+			<VBox>
+				<layoutData><l:SplitterLayoutData size="auto" /></layoutData>
+			
+				<Input id="polygon" visible="false"/>
+
+                <HBox height="20px" />
+
+                <HBox>
+                    <VBox>
+    					<Label text="Total Claim Payment Amount:" labelFor="claimPaymentAmount" />
+    					<Text id="claimPaymentAmount" />                       
+                    </VBox>
+                    <VBox width="50px" />
+                    <VBox>
+    					<Label text="Total Premiums Before Tax:" labelFor="premiumBeforeTax" />
+    					<Text id="premiumBeforeTax" />
+                    </VBox>
+                </HBox>				
+
+                <HBox height="20px" />
+
+                <HBox>
+                    <VBox>
+    					<Label text="Business Partner:" labelFor="bp" />
+    					<ComboBox id="bp" items="{path: '/BusinessPartner'}" selectionChange="doRefresh">
+    						<core:Item key="{BusinessPartner}" text="{BusinessPartnerFullName}" />
+    					</ComboBox>
+                    </VBox>
+                    <VBox width="50px" />
+                    <VBox>
+    					<Label text="Line Of Business:" labelFor="lob" />
+    					<ComboBox id="lob" items="{path: '/LineOfBusiness'}" selectionChange="doRefresh">
+    						<core:Item key="{LineOfBusiness}" text="{LineOfBusinessName}" />
+    					</ComboBox>
+                    </VBox>
+                    <VBox width="50px" />
+                    <VBox>
+						<Label text="Predict?" labelFor="predict" />
+						<Switch state="false" id="predict" customTextOn="Yes" customTextOff="No" change="doRefresh" />
+                    </VBox>
+                </HBox>				
+
+                <HBox height="20px" />
+
+				<Table id="lossTriangle" inset="false" items="{path: '/results'}">
+					<columns>
+						<Column>
+							<Text text="Year" />
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right">
+							<Text text="12 Mths" />
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right">
+							<Text text="24 Mths" />
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right">
+							<Text text="36 Mths" />
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right">
+							<Text text="48 Mths" />
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Right">
+							<Text text="60 Mths" />
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<ObjectIdentifier text="{Year}" class="sapMTableContentMargin" />
+								<ObjectNumber number="{path: 'D1', formatter: 'view.formatter.Number'}" state="{path: 'StateD1', formatter: 'view.formatter.DState'}"/>
+								<ObjectNumber number="{path: 'D2', formatter: 'view.formatter.Number'}" state="{path: 'StateD2', formatter: 'view.formatter.DState'}"/>
+								<ObjectNumber number="{path: 'D3', formatter: 'view.formatter.Number'}" state="{path: 'StateD3', formatter: 'view.formatter.DState'}"/>
+								<ObjectNumber number="{path: 'D4', formatter: 'view.formatter.Number'}" state="{path: 'StateD4', formatter: 'view.formatter.DState'}"/>
+								<ObjectNumber number="{path: 'D5', formatter: 'view.formatter.Number'}" state="{path: 'StateD5', formatter: 'view.formatter.DState'}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+
+			</VBox>
+
+	</l:Splitter>
+
+</mvc:View>

@@ -1,0 +1,10 @@
+service namespace "SHA_Insurance" {
+    "_SYS_BIC"."SHA_Insurance/SHA_BP" as "BusinessPartner" key ("BusinessPartner")
+        create forbidden 
+        update forbidden 
+        delete forbidden; 
+    "_SYS_BIC"."SHA_Insurance/SHA_LOB" as "LineOfBusiness" key ("LineOfBusiness")
+        create forbidden 
+        update forbidden 
+        delete forbidden; 
+}
